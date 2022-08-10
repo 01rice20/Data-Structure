@@ -1,0 +1,36 @@
+不用壓縮，直接上傳 .cpp 以及 .h 檔。
+另外再上傳一個【題號.txt】檔，內容為你有撰寫出程式的題號。
+
+班號：            姓名：                                 當你完成某一小題後，請在題號前打勾，沒打勾的助教不會檢查。
+1. 下載 Final202206.zip 並解壓縮，本次所需要的程式檔案( .h 與 .cpp檔)已全部在裡面。
+2. 建立一個以你的班號(例如，I2A05, I2B53)為名稱的新專案，並加入所有解壓縮的程式檔案。
+3. 程式一開始的輸入畫面，總共有 4 個選項；選項1 ~ 4 分別對應到題目1 ~ 4 所要求的功能。
+4. 每個選項各有其輸出入畫面(doQ1(...)~doQ4(...))，其程式碼在Final202206.cpp裡，你不需也不可另行修改。
+5. 第 1 和第 2 個選項，你只需要修改Final202206.cpp，第 3 個選項需要修改BinarySearchTree.h，第 4 個選項需要修改HashedDictionary.h，底下進一步說明。
+題目1 (30 points)：須上傳 Final202206.cpp
+在 Final202206.cpp 找到 pqArrayInsert(...) 與 pqArrayDelete(...) 撰寫適當的程式碼，將輸入的 word 加入 array-based 的 priority queue 中，並利用 size 變數 (int) 來記錄已儲存的 words 個數。Priority queue 的每個元素皆係 BinaryNode<string>，內有一 item 欄位用來存放輸入的 word，還有一 count 欄位用來記錄該 word 的實際個數(可參考 BinaryNode.h)。
+_____ (a) (5 points) pqArrayInsert(BinaryNode<string>* pqArray, int& size, const string word ) 是用來將傳進來的 word 儲存在 pqArray 裡，而每個儲存的 word 皆有一個附屬的 count。當一個還不存在 pqArray 裡的 word 被加進來時，count 值會自動被設為 1；此後，若再有相同的 word 傳進來時，則不再重複儲存，而僅是將該word 的 count 值加 1 (請使用 countUp())。
+_____ (b) (10 points) 承上，將每個 word 按照 count 值由大到小的順序存放，count 值越大，則在 pqArray裡會被存放在越前面的位置；若 count 值相同，則 word 字串長度(length)越大者在越前面；若長度又相同，則按照字串內容本身的大小(例如，”efg”> “abc”)，由大到小存放。注意：每當 word 的 count 值增加後，必須適當地調整該 word 的存放位置(可能不變也可能前移)，使其順序符合前述的原則。
+_____ (c) (5 points) int pqArrayDelete(BinaryNode<string>* pqArray, int& size, const string word ) 是用來將 pqArray 裡的某個 word 的 count 值減 1 (請使用 countDown())，並回傳該 count 值；若該 word 不存在 pqArray 裡，則回傳 -1。當 count 減為 0 時，要將該 word 移除，其空位由其後的 word 依序往前遞補。
+_____ (d) (10 points) 承上，當 count 值減少(但不為 0)後，適當地調整該 word 的存放位置(可能不變也可能挪後)，使其順序符合前述的原則。
+註：BinaryNode 已有 countUp(), countDown(), getItem(), setItem(…), getCount() 和 setCount(…) 等operations 可使用，你不需要自行新增 operations.
+題目2 (10 points)：須上傳 Final202206.cpp
+_____(a)(5 points) 在 Final202206.cpp 找到 updateEdgeWeight (…)，加入適當的程式碼，使其將輸入的兩個節點間的weight更改為新的weight，若兩個節點間原先並無edge 相連，則不做任何更動。(注意：edge weight可以為0)
+_____ (b) (5 points) 在 Final202206.cpp 找到 averageEdgeWeight()，加入適當的程式碼，使其可以回傳 graph 中所有 edge weights的平均值。注意：你的程式必須真的去adjacency matrix 中找到 edge weight 來加總計算平均，不可以用偷吃步(助教檢查程式時會改變graph 的 weights)。
+
+題目3 (25 points)：須上傳 BinarySerachTree.h
+修改 BinarySerachTree.h 使得 binary search tree 有底下的功能。
+_____ (a) (5points) nodesOfOnlyChildR(…) 是個 recursive function，能計算並回傳 search tree裡有多少個只有1個child的節點數，亦即，計算tree的節點數時要排除有2個children的節點以及leaf 節點。。
+_____ (b) (10 points) nodesOfOnlyChildI(…) 是個 iterative function，功能同上。
+_____ (c) (5 points) isAllSingleR(const ItemType target)：是個 recursive function，能判斷target節點以及其後代是否都只有1個child(亦即單脈相傳)，若是則回傳true，否則回傳 false。
+_____ (d) (5 points) isAllSingleI(const ItemType target)：是個 iterative function，，功能同上。
+ 
+題目4 (35points)：須上傳HashedDictionary.h
+在 HashedDictionary.h 找到 add(...)，remove(...) 與 getEntry(…)，撰寫適當的程式碼，將 word 加入 hash table 的 bucket 中或是將之移除。加入 bucket 的 nodes 皆屬於 HashedEntry<string>，除了原先的 key 與 item 欄位外，還增加了一個count 欄位(可參考 HashedEntry.h)，用來記錄該 word 的實際個數。
+_____ (a) (5 points) getEntry(const KeyType& searchKey)：根據 searchKey，將找到的 word 所在節點的指標值回傳；若找不到該 word，則回傳 nullptr。
+_____ (b) (5 points) add(const KeyType& searchKey, const ItemType& newItem)：會將存放著 word 的 newItem 放入 hash table 的 bucket 中。當一個還不存在 table 裡的word 被加進來時，count 值會被自動被設為 1。此後，若再有相同的 word 傳進來時，則不再重複儲存，而僅是將該word 的 count 值加 1。
+_____ (c) (10 points) 承上，將每個 word 按照 count 值由大到小的順序存放，count 值越大，則在 pqArray裡會被存放在越前面的位置；若 count 值相同，則 word 字串長度(length)越大者在越前面；若長度又相同，則按照字串內容本身的大小(例如，”efg”> “abc”)，由大到小存放。注意：每當 word 的 count 值增加後，必須適當地調整該 word 的存放位置(可能不變也可能前移)，使其順序符合前述的原則。
+_____ (d) (5 points) bool remove(const KeyType& searchKey)：根據 searchKey，將找到的 word 其 count值減 1，並回傳 true，；若找不到該 word，則回傳 false。當 count 減為 0 時，須將該 word 從bucket 中移除。
+_____ (e) (10 points) 承上，當 count 值減少(但不為 0)後，適當地調整該 word 的存放位置(可能不變也可能挪後) ，使其順序符合前述的原則。
+ 
+註：HashedEntry 已有 countUp(), countDown(), getCount(), setCount(…) getNext(),setNext(…) 和 getKey()等 operations 可使用，你不需自行新增operations。

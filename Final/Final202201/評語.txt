@@ -1,0 +1,8 @@
+Score:39
+
+feedback:
+
+1.c 回傳值錯誤
+2.c 當weight都小於-1時會有錯誤
+3.b 在進行遞迴呼叫時應該加上retrun 來幫助值得回傳
+3.d ItemType直接宣告就好，無法準確完成程式要求，bug過多
