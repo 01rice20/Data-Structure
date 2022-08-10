@@ -1,0 +1,7 @@
+Score: 62
+
+Feedback
+
+2.f 應該複製傳入的poly到this的polynomioalPtr才對
+2.g 沒有coef相加等於0的情況處理。若expo不存在則需要新增新的元素，會有提早先計算別的expo的情況
+2.h沒有coef相加等於0的情況處理。若expo不存在則需要新增新的元素

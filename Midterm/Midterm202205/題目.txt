@@ -1,0 +1,47 @@
+班號：            姓名：                      若你做完某一題(或小題)，請在題號前打勾，沒打勾的，助教不會檢查。
+
+1. 下載 Midterm202205.zip 並解壓縮，本次所需要的程式檔案( .h 與 .cpp檔)全部在裡面，你不需要再建立任何新的程式檔案。
+
+2. 利用 Visual studio 建立一個以你班號(例如，I2A05, I2B53)為名稱的新專案，並加入所有解壓縮的程式檔案。
+
+3. 編譯並執行該專案，你會看到程式一開始的輸入畫面，總共有4個選項；除了Exit 的選項外，其他3個選項分別對應到題目 1~3 所要求的功能。
+
+4. 每個選項各有其輸出入畫面( doQ1(...) ~  doQ3(...) )，其程式碼在 Midterm202205.cpp 裡，且皆已完備，你不需要也不可以另行修改。
+
+ 
+
+題目1 (4 points)：須上傳 Midterm202205.cpp
+____在 Midterm2015_11.cpp 找到 void difference (...)，撰寫一個 recursive function，能將陣列裡每個位置的數字更改為該數字與其前面所有數字相減後的和，其公式為
+                A[0] = A[0] and A[n] = A[n] - A[n-1] for n >0。
+
+        例：若陣列為 {1, 3, 6, 10,15}，則經 difference (...) 後會變為 {1, 2,3, 4, 5}。
+
+ 
+
+題目2(66 points)：須上傳 polynomial1.h
+
+____(a) (20 points)在 polynomial1.h 找到與 inputTerms(...)，加入適當的程式碼，使其可以不需按照降冪的順序輸入係數(係數可為負數)，卻會按降冪的順序存入(5 points each)。若相同冪次的係數重覆輸入，則將係數相加；若相加後係數為0，則將該次方項移除(5 points each)。
+
+____(b) (5 points) 在 polynomial1.h 找到 computeRecursively(intx, int i)，加入適當的程式碼，使其可以代入x 的值，recursivly 計算出 ArrayBased多項式的值並回傳。
+
+____(c) (5 points) 在 polynomial1.h 找到 computeRecursively(intx, LinkedPolynomialTerm *currPtr)，加入適當的程式碼，使其可以代入x 的值，recursivly 計算出 LinkBased 多項式的值並回傳。
+
+____(d) (8 points) 在 polynomial1.h 找到 printArrayBasedPolyRecursively(int i)，加入適當的程式碼，使其可以recursively 將多項式顯示在螢幕上。
+
+____(e) (8 points) 在 polynomial1.h 找到  printLinkBasedPolyRecursively(LinkedPolynomialTerm*currPtr)，加入適當的程式碼，使其可以recursively 將多項式顯示在螢幕上。
+
+____(f) (10 points) 在 polynomial1.h 找到 copy(ArrayPolynomial&poly)，加入適當的程式碼，將  ArrayBased 多項式的內容複製成與poly多項式一模一樣。注意：複製的意思是兩多項式的內容一樣，但這兩個多項式並不是同一個多項式。
+
+____(g) (10 points) 在 polynomial1.h 找到 copy(LinkedPolynomial&poly)，加入適當的程式碼，將  LinkBased 多項式的內容複製成與 poly 多項式一模一樣。注意：同上。
+
+ 
+
+題目3 (30 points)：須上傳 ArrayBag.h (a, c) 和 LinkedBag.h (b, d)
+
+____ (a). (5 points) 在 ArrayBag.h 找到 remove(const ItemType& anEntry)，加入適當的程式碼，加入適當的程式碼，使其可以將 ArrayBag 裡跟 anEntry 相同的 items 全部移除(也就是有幾個就移除幾個)。注意：不可再另行新增方法。
+
+____ (b). (5 points) 在 LinkedBag.h 找到 remove(const ItemType& anEntry)，加入適當的程式碼，使其可以將 LinkedBag 裡跟 anEntry相同的 items 全部移除(也就是有幾個就移除幾個)。注意：同上。
+
+____ (c). (10 points) 在 ArrayBag.h 找到 remove(const ArrayBag<ItemType>& aBag)，加入適當的程式碼，使其可以移除 ArrayBag 裡跟 aBag 裡的 items 所有相同的 items。注意：不可再另行新增方法。
+
+____ (d). (10 points) 在 LinkedBag.h 找到 remove(const LinkedBag<ItemType>* aBag)，加入適當的程式碼，使其可以移除 LinkedBag 裡跟 aBag 裡的 items 所有相同的 items。注意：同上。
